@@ -1,0 +1,123 @@
+﻿<Window x:Class="DictionaryGuy_GUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DictionaryGuy_GUI"
+        mc:Ignorable="d"
+        Title="DictionaryGuy" Height="500" Width="600"
+        x:Name="mainWindow">
+    <TabControl>
+        <TabItem Header="Word Search" x:Name="word_search">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="1" Grid.Row="1" Text=" Looking for:" Margin="0,5,0,0" FontSize="18" Background="LightGray"/>
+                <StackPanel Grid.Column="1" Grid.Row="2" Background="LightGray">
+                    <RadioButton Grid.Column="1" Grid.Row="2" Content="Synonyms" Margin="5" FontSize="14" GroupName="Option" Name="btn_synonyms"/>
+                    <RadioButton Grid.Column="1" Grid.Row="3" Content="Rhymes" Margin="5" FontSize="14" GroupName="Option" Name="btn_rhymes"/>
+                    <RadioButton Grid.Column="1" Grid.Row="4" Content="Words that begin with" Margin="5" FontSize="14" GroupName="Option" Name="btn_wordbegin"/>
+                    <RadioButton Grid.Column="1" Grid.Row="5" Content="Words that end with" Margin="5" FontSize="14" GroupName="Option" Name="btn_wordend"/>
+                </StackPanel>
+                <TextBlock Grid.Column="1" Grid.Row="6" Text="Search criteria:" Margin="5, 0, 0, 0" FontSize="16"/>
+                <TextBox Grid.Column="1" Grid.Row="7" Margin="5" Name="searchCriteria"/>
+                <Button Grid.Column="1" Grid.Row="8" Click="SearchTypeOne">Go!</Button>
+
+                <Image Grid.Column="3" Grid.Row="0" Source="C:\Users\danie\Documents\Uni\Anul III\App Dev .NET\DictionaryBoy\dictBoyLogo.png"
+                       MaxHeight="110" Grid.RowSpan="3" Margin="0, 0, 0, 5" MinHeight="70"/>
+                <TextBlock Grid.Column="3" Grid.Row="4" Text="Result:" Margin="0, 5, 0, 0" Grid.RowSpan="1" FontSize="14"/>
+                <TextBox TextWrapping="Wrap" AcceptsReturn="True" Grid.Column="3" Grid.Row="5" Grid.RowSpan="4" Margin="0,0,0,-70" Name="result_wordSearch"
+                         Text="{Binding Path=DataContext, ElementName=word_search}" MaxHeight="150" VerticalScrollBarVisibility="Visible"/>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Sentences" x:Name="sentences">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="250"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="Type a word and we'll get you some" Margin="0, 5, 0, 0"/>
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="sentences containing it."/>
+                <TextBlock Grid.Column="1" Grid.Row="2" Text="Keyword:"/>
+                <TextBox Grid.Column="1" Grid.Row="3" Margin="2, 0, 30, 8" Name="sentence_keyword"/>
+
+                <Image Grid.Column="2" Grid.Row="0" Source="C:\Users\danie\Documents\Uni\Anul III\App Dev .NET\DictionaryBoy\dictBoyLogo.png"
+                       MaxHeight="110" Grid.RowSpan="5" MinHeight="70"/>
+
+                <Button Grid.Row="6" Grid.Column="1" Margin="10,5,35,5" Click="SearchTypeTwo">Go!</Button>
+                <TextBlock Grid.Row="7" Grid.Column="1" Text="Result:" Margin="0, 15, 0, 0"/>
+                <TextBox Grid.Row="8" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="0,0,0,-100" Name="result_sentence"
+                         Text="{Binding Path=DataContext, ElementName=sentences}" TextWrapping="Wrap" MaxHeight="150" VerticalScrollBarVisibility="Visible"/>
+
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Dictionary" x:Name="dictionary">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition/>
+
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="Not sure what a word means?" Margin="5, 10, 0,0"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" Text="We got your back!" Margin="5, 0, 0, 0"/>
+                <TextBlock Grid.Row="2" Grid.Column="1" Text="Search the definition for:" Margin="5, 0, 0, 0"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Margin="5" Name="dict_word"/>
+                <Button Grid.Row="4" Grid.Column="1" Margin="15, 5, 15, 5" Padding="0, 2, 0, 2" Click="SearchTypeThree">Go!</Button>
+
+                <Image Grid.Column="3" Grid.Row="0" Source="C:\Users\danie\Documents\Uni\Anul III\App Dev .NET\DictionaryBoy\dictBoyLogo.png"
+                       MaxHeight="110" Grid.RowSpan="2"/>
+                <TextBlock Grid.Column="3" Grid.Row="3" Text="Result:"/>
+                <TextBox Grid.Column="3" Grid.Row="4" Grid.ColumnSpan="1" Grid.RowSpan="2" TextWrapping="Wrap" Name="result_dict"
+                         Text="{Binding Path=DataContext, ElementName=dictionary}" MaxHeight="200" VerticalScrollBarVisibility="Visible"/>
+
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>
